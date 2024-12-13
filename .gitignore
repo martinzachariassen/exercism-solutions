@@ -1,0 +1,34 @@
+# General ignores for macOS
+.DS_Store
+
+# IntelliJ IDEA-specific
+.idea/
+*.iml
+
+# Build and Gradle files
+.gradle/
+build/
+out/
+!gradle/wrapper/gradle-wrapper.jar  # Include the Gradle wrapper JAR
+.gradlew
+.gradlew.bat
+
+# Logs
+*.log
+
+# Kotlin specific
+*.class
+*.jar
+*.war
+*.ear
+
+# Exclude compiled files from source and tests
+**/build/
+
+# Temporary files
+*.swp
+*.tmp
+*.temp
+
+# Exercism-specific (optional)
+.exercism/
