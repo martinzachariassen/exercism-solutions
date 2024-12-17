@@ -37,13 +37,52 @@ out/
 .exercism/
 
 ###
+### JAVA
+###
+# Maven specific
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Gradle specific
+!gradle/wrapper/gradle-wrapper.jar
+
+# Java compiled output
+*.jmod
+
+# Eclipse IDE specific
+.classpath
+.project
+.settings/
+bin/
+
+# NetBeans IDE specific
+nbproject/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# JUnit test reports
+test-results/
+surefire-reports/
+
+# Temporary files
+*.bak
+*.~*
+
+# Generated files
+hs_err_pid*
+replay_pid*
+
+###
 ### TYPESCRIPT
 ###
 # Node.js dependencies
 node_modules/
-
-# TypeScript compiled output
-dist/
 
 # Logs
 npm-debug.log*
