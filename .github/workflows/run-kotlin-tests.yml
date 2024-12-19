@@ -28,6 +28,7 @@ jobs:
           for project in $(find . -name "build.gradle.kts" -exec dirname {} \;); do
             echo "Running tests in $project"
             cd $project
+            chmod +x ./gradlew  # Grant execute permissions to gradlew
             ./gradlew test
             cd -
           done
