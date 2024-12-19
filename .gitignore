@@ -1,0 +1,113 @@
+###
+### KOTLIN
+###
+# General ignores for macOS
+.DS_Store
+
+# IntelliJ IDEA-specific
+.idea/
+*.iml
+
+# Kotlin specific
+*.class
+*.war
+*.ear
+
+# Build and Gradle files
+.gradle/
+build/
+out/
+!**/gradle/wrapper/gradle-wrapper.jar  # Include the Gradle wrapper JAR
+.gradlew
+.gradlew.bat
+
+# Logs
+*.log
+
+# Exclude compiled files from source and tests
+**/build/
+
+# Temporary files
+*.swp
+*.tmp
+*.temp
+
+# Exercism-specific (optional)
+.exercism/
+
+###
+### JAVA
+###
+# Maven specific
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Java compiled output
+*.jmod
+
+# Eclipse IDE specific
+.classpath
+.project
+.settings/
+bin/
+
+# NetBeans IDE specific
+nbproject/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# JUnit test reports
+test-results/
+surefire-reports/
+
+# Temporary files
+*.bak
+*.~*
+
+# Generated files
+hs_err_pid*
+replay_pid*
+
+###
+### TYPESCRIPT
+###
+# Node.js dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# System files
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# TypeScript files
+*.tsbuildinfo
+
+# Editor-specific files
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# MacOS specific
+._*
+
+# Coverage reports
+coverage/
+*.lcov

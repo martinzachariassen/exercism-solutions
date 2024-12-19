@@ -1,0 +1,64 @@
+name: Run Kotlin Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Run Tests for All Projects
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Find and Run Tests in All Projects
+        run: |
+          # Find all projects with build.gradle.kts
+          echo "Searching for Kotlin projects..."
+          projects=$(find . -name "build.gradle.kts" -exec dirname {} \;)
+          
+          # Exit if no projects are found
+          if [ -z "$projects" ]; then
+            echo "No Kotlin projects found with build.gradle.kts."
+            exit 1
+          fi
+
+          for project in $projects; do
+            echo "-----------------------------------"
+            echo "Running tests in: $project"
+            echo "-----------------------------------"
+          
+            # Navigate to project directory
+            cd $project
+
+            # Check for Gradle wrapper, generate if missing
+            if [ ! -f ./gradlew ]; then
+              echo "Gradle wrapper missing in $project. Generating wrapper..."
+              gradle wrapper
+            fi
+
+            # Ensure gradlew is executable
+            chmod +x ./gradlew
+
+            # Run tests
+            echo "Executing tests in $project..."
+            ./gradlew test --no-daemon || {
+              echo "Tests failed in $project."
+              exit 1  # Fail the job if tests fail
+            }
+          
+            # Return to root directory
+            cd -
+          done
