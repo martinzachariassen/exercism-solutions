@@ -1,0 +1,33 @@
+name: Run Kotlin Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Run Tests for All Projects
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Run Tests for All Kotlin Projects
+        run: |
+          for project in $(find . -name "build.gradle.kts" -exec dirname {} \;); do
+            echo "Running tests in $project"
+            cd $project
+            ./gradlew test
+            cd -
+          done
