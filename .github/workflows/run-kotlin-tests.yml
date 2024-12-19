@@ -28,7 +28,11 @@ jobs:
           for project in $(find . -name "build.gradle.kts" -exec dirname {} \;); do
             echo "Running tests in $project"
             cd $project
-            chmod +x ./gradlew  # Grant execute permissions to gradlew
+            if [ ! -f ./gradlew ]; then
+              echo "Gradle wrapper missing in $project. Generating wrapper..."
+              gradle wrapper # Generate the wrapper if missing
+            fi
+            chmod +x ./gradlew  # Ensure gradlew is executable
             ./gradlew test
             cd -
           done
